@@ -137,29 +137,29 @@ const CardReducer = (state , action) => {
                             total_amount:totalAmount,
                         }
 
-                        case 'SHIPP_CHARGES':
-                          const {total_amount,shipp_charges ,shipping }=state;
-                          if(total_amount >= 5000){
-                            let total = total_amount + shipping;
+                        // case 'SHIPP_CHARGES':
+                        //   const {total_amount,shipp_charges ,shipping }=state;
+                        //   if(total_amount >= 5000){
+                        //     let total = total_amount + shipping;
 
-                            if(total_amount === 0){
-                                total = total_amount + 0;
-                            }
+                        //     if(total_amount === 0){
+                        //         total = total_amount + 0;
+                        //     }
 
-                            return{
-                                ...state,
-                                paybill:total,
-                            }
-                          }else if(total_amount < 5000){
-                            let totalget = total_amount + shipp_charges;
-                            return{
-                                ...state,
-                                paybill:totalget,
-                            }
-                          }
+                        //     return{
+                        //         ...state,
+                        //         paybill:total,
+                        //     }
+                        //   }else if(total_amount < 5000){
+                        //     let total = total_amount + shipp_charges;
+                        //     return{
+                        //         ...state,
+                        //         paybill:total,
+                        //     }
+                        //   }
                               
                        
-              break;         
+                      
         default:
             return state;
 

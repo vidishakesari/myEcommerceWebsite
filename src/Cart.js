@@ -39,9 +39,10 @@ const {Card ,cleanitem , total_amount ,paybill ,shipping ,shipp_charges}=useCard
      <div className='container'>
         <div>
           <p className='amountTotal'>Total Amount : <FormatPrice price = {total_amount}/></p>
-          <p className='amountTotal'>Shipping Charges : {(total_amount === 0) ? 0  : (total_amount >= 5000) ? <FormatPrice price = {shipping}/> : <FormatPrice price={shipp_charges}/>}</p>
+         
+          <p className='amountTotal'>Shipping Charges : <FormatPrice price={ total_amount === 0 ? 0 : total_amount <= 5000 ? shipping : shipp_charges}/></p>
           <hr/>
-          <p className='amountTotal'>Amount to pay : <FormatPrice price = {paybill}/></p>
+          <p className='amountTotal'>Amount to pay : <FormatPrice price = {total_amount}/></p>
         </div>
      </div>
      

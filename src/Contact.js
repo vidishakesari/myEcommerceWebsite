@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import Footer from './component/Footer';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Contact = () => {
+
+  const { user,isAuthenticated} = useAuth0();
   return (
     <Wrapper>
 
@@ -27,14 +30,18 @@ title="This is a unique title"
               type="text"
               placeholder="username"
               name="username"
+              value={isAuthenticated ? user.name : ''}
               required
               autoComplete="off"
               
             />
 
+           
+
             <input
               type="email"
               name="Email"
+              value={isAuthenticated ? user.email : ''}
               placeholder="Email"
               autoComplete="off"
               required

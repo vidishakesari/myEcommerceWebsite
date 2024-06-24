@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import {Button} from '../style/Button';
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
 import { useCardContext } from "../context/CardContext";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const Nav = () => {
+  const { loginWithRedirect , logout , user,isAuthenticated} = useAuth0();
+  
   const {total_item}= useCardContext()
   const [menuIcon, setMenuIcon] = useState();
   const Nav = styled.nav`
@@ -161,6 +166,9 @@ const Nav = () => {
       padding: 0.8rem 1.4rem;
     }
   }
+  Button{
+    padding:.5rem;
+  }
 `;
 
 return (
@@ -199,6 +207,29 @@ return (
             Contact
           </NavLink>
         </li>
+
+       {isAuthenticated && (
+        <p>{user.name}</p>
+       )}
+      
+      {isAuthenticated ?(
+        <li>
+        <Button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+      Log Out
+    </Button>
+        </li>
+      ) : (
+        
+        <li>
+        <Button onClick={() => loginWithRedirect()}>Log In</Button>
+        </li>
+      )
+      
+      }
+        
+
+        
+
         <li>
           <NavLink to="/cart" className="navbar-link cart-trolley--link">
             <FiShoppingCart className="cart-trolley" />

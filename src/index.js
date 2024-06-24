@@ -6,10 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { AppProvider } from './context/ProductContext';
 import { FilterContextProvider } from './context/FilterContect';
 import { CardContextProvider } from './context/CardContext';
-
+import { Auth0Provider } from '@auth0/auth0-react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
+  <Auth0Provider
+    domain="dev-yiik4tcxtmcxkqwi.us.auth0.com"
+    clientId="eAqHjOOccK2sXkykHwfD2ItI3oKLcD0B"
+    authorizationParams={{redirect_uri: window.location.origin}}>
   <AppProvider>
   <FilterContextProvider>
   <CardContextProvider>
@@ -19,7 +24,7 @@ root.render(
   </CardContextProvider>
   </FilterContextProvider>
   </AppProvider>
-  
+  </Auth0Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
