@@ -1,6 +1,5 @@
 {
   "name": "myecommercesite",
-  "homepage": "https://vidishakesari.github.io/myEcommerceWebsite",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
